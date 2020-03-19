@@ -5,6 +5,7 @@
 #'@return The Debrowska bivariate survival function estimate with times for variable 1 on the rows and times for variable 2 on the columns
 #'@export
 BivDabrowska= function(data){
+  data <- as.matrix(data)
   if(sum(is.na(data)) >0){stop("Data includes missing values")}
   ###########################################  
   ## bivariate event and at-risk processes ##

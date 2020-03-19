@@ -19,6 +19,12 @@ CovMatComp(data, causes, p = NA, t, mineigen = 0.001)
 }
 \value{
 A list with the following elements
+\itemize{
+\item{CovMartComp: The full martingale covariance matrix}
+\item{CorMartComp: The full martingale correlation matrix}
+\item{CovCountComp: The full counting process covariance matrix}
+\item{CorCountComp: The full counting process correlation matrix}
+}
 }
 \description{
 This takes survival times and censoring/causue indicators for p different variables and caclulates the p times p martingale and counting process covariance matrices for all variables in the presence of competing risks.

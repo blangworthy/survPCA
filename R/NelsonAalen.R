@@ -9,6 +9,7 @@
 #'}
 #'@export
 NelsonAalen <- function(data){
+  data <- as.matrix(data)
   if(sum(is.na(data)) > 0){stop("Data includes missing values")}
   uniquetime <- unique(sort(data[,1]))
   n <- dim(data)[1]  

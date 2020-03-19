@@ -22,6 +22,7 @@
 CovComp <- function(data,t,cause1,cause2){
   
   data <- as.matrix(data)
+  if(min(data[,1]<=0)){stop("Observed times should be positive")}
   if(sum(is.na(data)) > 0){stop("Data includes missing values")}
   if(is.numeric(data) == FALSE){stop("Event times and censoring/cause indicator should be numeric")}
   if(cause1 ==0){stop("Zero should be for censoring not a cause")}
@@ -58,8 +59,8 @@ CovComp <- function(data,t,cause1,cause2){
   survobj2 <- survival::Surv(time = data[,2],event=ifelse(data[,4]>0,1,0))
   km2 <- survival::survfit(survobj2~1)
   survest2 <- stepfun(km2$time, c(1, km2$surv))
-  tmp <- cbind(km1$surv,BivSurv) 
-  BivSurvFull <- rbind(c(1,km2$surv),tmp)
+  tmp <- cbind(survest1(unique(sort(data[,1]))),BivSurv) 
+  BivSurvFull <- rbind(c(1,survest2(unique(sort(data[,2])))),tmp)
   # to handle non-monotonicity of Dabrowska's estimator, use cummin
   BivSurvFull <- apply(BivSurvFull,2,cummin)
   BivSurvFull <- t(apply(BivSurvFull,1,cummin))

@@ -17,6 +17,12 @@ CovMatNoComp(data, p = NA, t, mineigen = 0.001)
 }
 \value{
 A list with the following elements
+\itemize{
+\item{CovMart: The full martingale covariance matrix}
+\item{CorMart: The full martingale correlation matrix}
+\item{CovCount: The full counting process covariance matrix}
+\item{CorCount: The full counting process correlation matrix}
+}
 }
 \description{
 This takes survival times and censoring/causue indicators for p different variables and caclulates the p times p martingale and counting process covariance matrices for all variables.

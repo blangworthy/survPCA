@@ -18,6 +18,10 @@
 #'
 #'@export
 CovNoComp <- CovNoComp <- function(data,t){
+  if(min(data[,1]<=0)){stop("Observed times should be positive")}
+  if(sum(is.na(data)) > 0){stop("Data includes missing values")}
+  if(is.numeric(data) == FALSE){stop("Event times and censoring/cause indicator should be numeric")}
+  
   data <- as.matrix(data)
   BivSurv <- BivDabrowska(data)
   
@@ -27,8 +31,8 @@ CovNoComp <- CovNoComp <- function(data,t){
   survobj2 <- survival::Surv(time = data[,2],event=ifelse(data[,4]>0,1,0))
   km2 <- survival::survfit(survobj2~1)
   survest2 <- stepfun(km2$time, c(1, km2$surv))
-  tmp <- cbind(km1$surv,BivSurv) 
-  BivSurvFull <- rbind(c(1,km2$surv),tmp)
+  tmp <- cbind(survest1(unique(sort(data[,1]))),BivSurv) 
+  BivSurvFull <- rbind(c(1,survest2(unique(sort(data[,2])))),tmp)
   # to handle non-monotonicity of Dabrowska's estimator, use cummin
   BivSurvFull <- apply(BivSurvFull,2,cummin)
   BivSurvFull <- t(apply(BivSurvFull,1,cummin))
@@ -36,9 +40,9 @@ CovNoComp <- CovNoComp <- function(data,t){
   colnames(BivSurvFull)[1] <- 0
   
   dhazard1 <- NelsonAalen(data[,c(1,3)])$hazard
-  dhazard1 <- dhazard1[dhazard1$time<=t,]
+  dhazard1 <- dhazard1[dhazard1$time<=t & dhazard1$time > 0,]
   dhazard2 <- NelsonAalen(data[,c(2,4)])$hazard
-  dhazard2 <- dhazard2[dhazard2$time<=t,]
+  dhazard2 <- dhazard2[dhazard2$time<=t & dhazard2$time > 0,]
   prodhaz <- dhazard1$hazard%*%t(dhazard2$hazard)
   rownames(prodhaz) <- dhazard1$time
   colnames(prodhaz) <- dhazard2$time
@@ -49,7 +53,7 @@ CovNoComp <- CovNoComp <- function(data,t){
   BivSurvFullMinusRow <- BivSurvFull[1:(nrow(BivSurvFull)-1),as.character(maxcolbiv)]
   names(BivSurvFullMinusRow) <- rownames(BivSurvFull)[-1]
   BivSurvFullMinusCol <- BivSurvFull[as.character(maxrowbiv),1:(ncol(BivSurvFull)-1)]
-  names(BivSurvFullMinusRow) <- colnames(BivSurvFull)[-1]
+  names(BivSurvFullMinusCol) <- colnames(BivSurvFull)[-1]
   
   BivSurvMinus <- BivSurvFull[1:(nrow(BivSurvFull)-1),1:(ncol(BivSurvFull)-1)]
   colnames(BivSurvMinus) <- colnames(BivSurvFull)[-1] 

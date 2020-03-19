@@ -6,13 +6,13 @@
 #'@param t The timepoint to estimate the covariance and correlation matrices
 #'@param mineigen The minimum eigenvalue for the martingale and counting process covariance matrices if not already positive semidefinite
 #'@return A list with the following elements
-#'@itemize{
+#'\itemize{
 #'\item{CovMart: The full martingale covariance matrix}
 #'\item{CorMart: The full martingale correlation matrix}
 #'\item{CovCount: The full counting process covariance matrix}
 #'\item{CorCount: The full counting process correlation matrix}
 #'}
-#'\export
+#'@export
 CovMatNoComp <- function(data,p=NA,t,mineigen = 0.001){
   if(is.na(p)){p=ncol(data)/2}
   data <- as.matrix(data[,1:(2*p)])

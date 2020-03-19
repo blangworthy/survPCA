@@ -11,6 +11,7 @@
 #'}
 #'@export
 CauseHaz<- function(data,cause){
+  data <- as.matrix(data)
   if(sum(is.na(data)) > 0){stop("Data includes missing values")}
   if(cause ==0){stop("Zero should be for censoring not a cause")}
   if(sum(data[,2] == cause) == 0){warning("Cause not found in censoring/cause indicator")}

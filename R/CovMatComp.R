@@ -7,13 +7,13 @@
 #'@param t The timepoint to estimate the covariance and correlation matrices
 #'@param mineigen The minimum eigenvalue for the martingale and counting process covariance matrices if not already positive semidefinite
 #'@return A list with the following elements
-#'@itemize{
+#'\itemize{
 #'\item{CovMartComp: The full martingale covariance matrix}
 #'\item{CorMartComp: The full martingale correlation matrix}
 #'\item{CovCountComp: The full counting process covariance matrix}
 #'\item{CorCountComp: The full counting process correlation matrix}
 #'}
-#'\export
+#'@export
 CovMatComp <- function(data,causes,p=NA,t,mineigen = 0.001){
   if(is.na(p)){p=ncol(data)/2}
   data <- as.matrix(data[,1:(2*p)])
@@ -26,14 +26,14 @@ CovMatComp <- function(data,causes,p=NA,t,mineigen = 0.001){
     for(y in (x):p){
       if(x==y){
         cumincout1 <- cmprsk::cuminc(data[,x],data[,(x+p)])
-        cif1 <- data.frame(cbind(cumincout1[[cause[p]]]$time,cumincout1[[cause[p]]]$est))
+        cif1 <- data.frame(cbind(cumincout1[[causes[p]]]$time,cumincout1[[causes[p]]]$est))
         cif1 <- dplyr::filter(dplyr::group_by(cif1,X1),X2 == max(X2))
         cif1fun <- stepfun(cif1$X1[-1],cif1$X2)
         CovMartComp[x,x] <- cif1fun(t)
         CovCountComp[x,x] <- cif1fun(t)*(1-cif1fun(t))
       }
       else{
-        covout <- CovComp(data[,c(x,y,(p+x),(p+y))],t,cause[x],cause[y])
+        covout <- CovComp(data[,c(x,y,(p+x),(p+y))],t,causes[x],causes[y])
         CovMartComp[x,y] <- covout$MartCov
         CovCountComp[x,y] <- covout$CountCov
       }

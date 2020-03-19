@@ -14,6 +14,7 @@
 #'
 #'@export
 BivCauseHaz <- function(data,cause1,cause2){
+  data <- as.matrix(data)
   if(sum(is.na(data)) > 0){stop("Data includes missing values")}
   if(cause1 ==0){stop("Zero should be for censoring not a cause")}
   if(cause2 ==0){stop("Zero should be for censoring not a cause")}
