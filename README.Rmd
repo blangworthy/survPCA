@@ -43,7 +43,7 @@ cens <- runif(n,min=0,max=4) #Censoring time
 eventsamps <-apply(expsamps,2,function(x)ifelse(x< cens,1,0)) #Censoring indicator
 
 
-observed_time <- apply(expsamps,2,function(x) pmin(x,cens)) #Minimum of failur time and censoring time
+observed_time <- apply(expsamps,2,function(x) pmin(x,cens)) #Minimum of failure time and censoring time
 
 
 cov_est_data <- cbind(observed_time,eventsamps) #Data in format for CovMatNoComp function
