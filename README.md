@@ -19,7 +19,9 @@ library(survPCA)
 library(MASS)
 
 #####Example without competing risks
-###In this example we simulate 4 non-competing events and calculate the martingale and counting process covariance and correlation matrices. All events have exponential 1 distribution and we estimate the covariance/correlation matrices at timepoint 1.
+###In this example we simulate 4 non-competing events and calculate the martingale and counting process
+###covariance and correlation matrices. All events have exponential 1 distribution and we estimate the
+###covariance/correlation matrices at timepoint 1.
 
 n <- 200 # sample size
 sigma <- toeplitz(c(1,0.6,0.4,0.2)) # Correlation structure for gaussian copula
