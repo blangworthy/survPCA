@@ -46,7 +46,7 @@ CovMatNoComp <- function(data,p=NA,t,mineigen = 0.001){
   
   CovCount[lower.tri(CovCount)] <- t(CovCount)[lower.tri(CovCount)]
   CovCount <- PSDmat(CovCount,mineigen)
-  if(0 %in% diag(bla)){
+  if(0 %in% diag(CovCount)){
     CorCount <- NA
     warning("Variance of one or more of counting processes estimated to be 0, correlation matrix not well defined")
   }else{
