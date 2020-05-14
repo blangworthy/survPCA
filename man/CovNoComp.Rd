@@ -21,5 +21,5 @@ A list with the following elements
 }
 }
 \description{
-This takes a two survival time and  two censoring indicators and calculates the martingale and counting process covariance at time t
+This takes survival times and censoring indicators for two variables and outputs the martingale and counting process covariance at time t
 }

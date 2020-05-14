@@ -2,7 +2,7 @@
 % Please edit documentation in R/BivCauseHaz.R
 \name{BivCauseHaz}
 \alias{BivCauseHaz}
-\title{Output the cause specific bivariate hazard and cumulative bivariate hazard}
+\title{Output the bivariate cause specific cumulative hazard and jumps in the bivariate cause specific cumulative hazard}
 \usage{
 BivCauseHaz(data, cause1, cause2)
 }
@@ -14,12 +14,12 @@ BivCauseHaz(data, cause1, cause2)
 \value{
 A list with the following elements:
 \itemize{
-\item{hazard: The bivariate cause specific hazard}
+\item{hazard: Jumps in the bivariate cause specific cumulative hazard}
 \item{cumhazard: The bivariate cause specific cumulative hazard}
 \item{cause1: The cause for the first variable}
 \item{cause2: The cause for the second variable}
 }
 }
 \description{
-This takes a two survival time and  two censoring/cause indicator and calculates the bivariate cause specific hazard and cumulative hazard
+This takes survival times and censoring/cause indicators for two variables and outputs the bivariate cause specific cumulative hazard and jumps in the bivariate cause specific cumulative hazard
 }

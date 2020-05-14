@@ -1,6 +1,6 @@
 #'Output the entire martingale and counting process covariance and correlation matrices for p different variables at time t in the presence of competing risks
 #'
-#'This takes survival times and censoring/causue indicators for p different variables and caclulates the p times p martingale and counting process covariance matrices for all variables in the presence of competing risks.
+#'This takes survival times and censoring/cause indicators for p different variables and outputs the p times p martingale and counting process covariance/correlation matrices for all variables in the presence of competing risks.
 #'@param data A matrix where the first p columns are the event times for the p variables and the next p columns are the censoring/cause indicators for the p variables. The order for the event times and censoring/cause indicators needs to be the same.
 #'@param causes A p-dimensional vector that has the causes for each of the p different variables.
 #'@param p The number of variables to calculate the matrix for, if NA ncol(data)/2 will be used

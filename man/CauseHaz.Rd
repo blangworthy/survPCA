@@ -2,7 +2,7 @@
 % Please edit documentation in R/CauseHaz.R
 \name{CauseHaz}
 \alias{CauseHaz}
-\title{Output the cause specific hazard and cumulative hazard}
+\title{Output the cause specific cumulative hazard and jumps in the cause specific cumulative hazard}
 \usage{
 CauseHaz(data, cause)
 }
@@ -14,11 +14,11 @@ CauseHaz(data, cause)
 \value{
 A list with the following elements
 \itemize{
-\item{hazard: The cause specific hazard estimate}
+\item{hazard: Jumps in the cause specific cumulative hazard estimate}
 \item{cumhazard: The cause specific cumulative hazard estimate}
 \item{cause: The cause value}
 }
 }
 \description{
-This takes a survival time and censoring/cause indicator and calculates the hazard and cumulative hazard
+This takes a survival time and censoring/cause indicator and outputs the cause specific cumulative hazard and jumps in the cause specific cumulative hazard
 }

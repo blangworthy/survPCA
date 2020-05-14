@@ -1,12 +1,12 @@
-#'Output the cause specific bivariate hazard and cumulative bivariate hazard
+#'Output the bivariate cause specific cumulative hazard and jumps in the bivariate cause specific cumulative hazard
 #'
-#'This takes a two survival time and  two censoring/cause indicator and calculates the bivariate cause specific hazard and cumulative hazard 
+#'This takes survival times and censoring/cause indicators for two variables and outputs the bivariate cause specific cumulative hazard and jumps in the bivariate cause specific cumulative hazard
 #'@param data An n by 4 matrix where the first column is the observed event time of the first variable, the second column is the observed event time of the second variable, the third column is the censoring/cause indicator for the first variable (0 indicates censored) and the fourth column is the censoring/cause indicator for the second variable (0 indicates censored)
-#'@param cause1 An indicator of which cause to calculate the cause specific hazard for for the first variable, should be a non-zero value that appears in the cencoring/cause indicator column for the first variable
+#'@param cause1 An indicator of which cause to calculate the cause specific hazard for for the first variable, should be a non-zero value that appears in the censoring/cause indicator column for the first variable
 #'@param cause1 An indicator of which cause to calculate the cause specific hazard for for the second variable, should be a non-zero value that appears in the cencoring/cause indicator column for the second variable
 #'@return A list with the following elements:
 #'\itemize{
-#'\item{hazard: The bivariate cause specific hazard}
+#'\item{hazard: Jumps in the bivariate cause specific cumulative hazard}
 #'\item{cumhazard: The bivariate cause specific cumulative hazard}
 #'\item{cause1: The cause for the first variable}
 #'\item{cause2: The cause for the second variable}

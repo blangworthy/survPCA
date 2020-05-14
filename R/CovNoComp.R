@@ -1,6 +1,6 @@
 #'Output the martingale and counting process covariance for two variables without presence of competing risks
 #'
-#'This takes a two survival time and  two censoring indicators and calculates the martingale and counting process covariance at time t
+#'This takes survival times and censoring indicators for two variables and outputs the martingale and counting process covariance at time t
 #'@param data An n by 4 matrix where the first column is the observed event time of the first variable, the second column is the observed event time of the second variable, the third column is the censoring indicator for the first variable (0 indicates censored) and the fourth column is the censoring indicator for the second variable (0 indicates censored)
 #'@param t The time to evaluate the martingale and counting process covariance at
 #'@return A list with the following elements

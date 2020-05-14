@@ -25,5 +25,5 @@ A list with the following elements
 }
 }
 \description{
-This takes survival times and censoring/causue indicators for p different variables and caclulates the p times p martingale and counting process covariance matrices for all variables.
+This takes survival times and censoring/causue indicators for p different variables and outputs the p times p martingale and counting process covariance/correlation matrices for all variables.
 }

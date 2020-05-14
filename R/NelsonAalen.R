@@ -1,10 +1,10 @@
-#'Output the Nelson Aalen hazard and cumulative hazard
+#'Output the Nelson Aalen cumulative hazard and jumps in the Nelson Aalen cumulative hazard
 #'
-#'This takes a survival time and censoring indicator and calculates the hazard and cumulative hazard using the Nelson Aalen Estimator
+#'This takes a survival time and censoring indicator and outputs the cumulative hazard and jumps in the cumulative hazard using the Nelson Aalen Estimator
 #'@param data An n by 2 matrix where the first column is the observed event time and the second column is the censoring indicator (0 indicates censored)
 #'@return A list with the following elements
 #'\itemize{
-#'\item{hazard: The Nelson-Aalen estimate for the hazard}
+#'\item{hazard: Jumps in the Nelson-Aalen estimate for the cumulative hazard}
 #'\item{cumhazard: The Nelson-Aalen estimate for the cumulative hazard}
 #'}
 #'@export

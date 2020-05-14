@@ -1,8 +1,8 @@
 #'Output the Dabrowska bivariate survival function estimate
 #'
-#'This takes two survival times and censoring indicators and outputs the Dabrowska bivariate survival function estimate
+#'This takes survival times and censoring indicators for two variables and outputs the Dabrowska bivariate survival function estimate
 #'@param data An n by 4 matrix where the first column is the observed event time of the first variable, the second column is the observed event time of the second variable, the third column is the censoring indicator for the first variable (0 indicates censored) and the fourth column is the censoring indicator for the second variable (0 indicates censored)
-#'@return The Debrowska bivariate survival function estimate with times for variable 1 on the rows and times for variable 2 on the columns
+#'@return The Debrowska bivariate survival function estimate with times for variable 1 along the rows and times for variable 2 along the columns
 #'@export
 BivDabrowska= function(data){
   data <- as.matrix(data)

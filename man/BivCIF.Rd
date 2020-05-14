@@ -7,14 +7,14 @@
 BivCIF(BivHaz, BivSurv)
 }
 \arguments{
-\item{BivHaz}{A two dimensional matrix with estimates of bivariate cause specific hazard function. Times for variable 1 are along the rows, times for variable 2 along columns.}
+\item{BivHaz}{A matrix with estimates of bivariate cause specific hazard function. Times for variable 1 are along the rows, times for variable 2 along columns.}
 
-\item{BivSurv}{A two dimensional matrix with estimates of bivariate survival times. Times for variable 1 are along the rows, times for variable 2 along columns.}
+\item{BivSurv}{A matrix with estimates of bivariate survival times. Times for variable 1 are along the rows, times for variable 2 along columns.}
 }
 \value{
 A list with the following elements:
 \itemize{
-\item{BivIF: The bivariate cause specific incidence function estimate}
+\item{BivIF: Jumps in the bivariate cause specific cumulative incidence function estimate}
 \item{BivCIF: The bivariate cause specific cumulative incidence function estimate}
 }
 }

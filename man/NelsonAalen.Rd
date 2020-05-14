@@ -2,7 +2,7 @@
 % Please edit documentation in R/NelsonAalen.R
 \name{NelsonAalen}
 \alias{NelsonAalen}
-\title{Output the Nelson Aalen hazard and cumulative hazard}
+\title{Output the Nelson Aalen cumulative hazard and jumps in the Nelson Aalen cumulative hazard}
 \usage{
 NelsonAalen(data)
 }
@@ -12,10 +12,10 @@ NelsonAalen(data)
 \value{
 A list with the following elements
 \itemize{
-\item{hazard: The Nelson-Aalen estimate for the hazard}
+\item{hazard: Jumps in the Nelson-Aalen estimate for the cumulative hazard}
 \item{cumhazard: The Nelson-Aalen estimate for the cumulative hazard}
 }
 }
 \description{
-This takes a survival time and censoring indicator and calculates the hazard and cumulative hazard using the Nelson Aalen Estimator
+This takes a survival time and censoring indicator and outputs the cumulative hazard and jumps in the cumulative hazard using the Nelson Aalen Estimator
 }

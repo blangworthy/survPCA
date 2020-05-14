@@ -10,8 +10,8 @@ BivDabrowska(data)
 \item{data}{An n by 4 matrix where the first column is the observed event time of the first variable, the second column is the observed event time of the second variable, the third column is the censoring indicator for the first variable (0 indicates censored) and the fourth column is the censoring indicator for the second variable (0 indicates censored)}
 }
 \value{
-The Debrowska bivariate survival function estimate with times for variable 1 on the rows and times for variable 2 on the columns
+The Debrowska bivariate survival function estimate with times for variable 1 along the rows and times for variable 2 along the columns
 }
 \description{
-This takes two survival times and censoring indicators and outputs the Dabrowska bivariate survival function estimate
+This takes survival times and censoring indicators for two variables and outputs the Dabrowska bivariate survival function estimate
 }

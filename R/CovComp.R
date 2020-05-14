@@ -1,6 +1,6 @@
 #'Output the martingale and counting process covariance for two variables in presence of competing risks
 #'
-#'This takes a two survival time and  two censoring/cause indicator and calculates the martingale covariance at time t
+#'This takes survival times and censoring/cause indicators for two variables and outputs the martingale and counting process covariance at time t
 #'@param data An n by 4 matrix where the first column is the observed event time of the first variable, the second column is the observed event time of the second variable, the third column is the censoring/cause indicator for the first variable (0 indicates censored) and the fourth column is the censoring/cause indicator for the second variable (0 indicates censored)
 #'@param t The time to evaluate the martingale and counting process covariance at
 #'@param cause1 An indicator of which cause to calculate the cause specific hazard for for the first variable, should be a non-zero value that appears in the censoring/cause indicator column for the first variable
