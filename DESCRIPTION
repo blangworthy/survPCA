@@ -1,7 +1,7 @@
 Package: survPCA
 Title: Estimation of PCA for Survival Data
-Version: 0.2.0
-Authors: Benjamin Wb Langworthy
+Version: 0.3.0
+Authors: Benjamin W Langworthy
 Description: This has functions to estimate principal components analysis for right censored survival data using martingales and counting processes with and without the presence of competing risks.
 Imports: cmprsk, dplyr, survival
 License: GPL-2
