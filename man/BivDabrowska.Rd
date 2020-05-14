@@ -13,5 +13,5 @@ BivDabrowska(data)
 The Debrowska bivariate survival function estimate with times for variable 1 along the rows and times for variable 2 along the columns
 }
 \description{
-This takes survival times and censoring indicators for two variables and outputs the Dabrowska bivariate survival function estimate
+This takes survival times and censoring indicators for two variables and outputs the Dabrowska bivariate survival function estimate. Modified from code originally written by Yu Cheng at University of Pittsburgh.
 }

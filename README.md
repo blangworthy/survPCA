@@ -1,7 +1,7 @@
 survPCA: A package for estimating martingale and counting process covariance matrix at a specified time
 =======================================================================================================
 
-The `survPCA` package estimates the covariance matrix for martingales and counting processes both in the semi-competing risk setting and the no competing risk setting. All code written by the author except for the BivDabrowska function which is modified from code provided by Yu Cheng at University of Pittsburgh.
+The `survPCA` package estimates the covariance matrix for martingales and counting processes both in the semi-competing risk setting and the no competing risk setting.
 
 Installation
 ------------
