@@ -6,6 +6,7 @@ n4 = dim(ee)[2]
 
 for (i in 1:n4)
   ee[,i] = cumsum(ee[,i])
+
 for (i in 1:n2)
   ee[i,] = cumsum(ee[i,])
 return(ee)
