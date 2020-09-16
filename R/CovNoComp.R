@@ -3,6 +3,7 @@
 #'This takes survival times and censoring indicators for two variables and outputs the martingale and counting process covariance at time t
 #'@param data An n by 4 matrix where the first column is the observed event time of the first variable, the second column is the observed event time of the second variable, the third column is the censoring indicator for the first variable (0 indicates censored) and the fourth column is the censoring indicator for the second variable (0 indicates censored)
 #'@param t The time to evaluate the martingale and counting process covariance at
+#'@param bivsurvtype A string vector indicating the type of bivariate survival estimator to use, "dabrowska" for Dabrowska's estimator and "linying" for Lin Ying. Lin Ying should only be used for univariate censoring, Dabrowska is default
 #'@return A list with the following elements
 #'\itemize{
 #'\item{MartCov: The martingale covariance between variable 1 and variable 2 at time t}
@@ -17,13 +18,18 @@
 #'@importFrom survival survfit
 #'
 #'@export
-CovNoComp <- CovNoComp <- function(data,t){
+CovNoComp <- CovNoComp <- function(data,t,bivsurvtype = "dabrowska"){
   if(min(data[,1]<=0)){stop("Observed times should be positive")}
   if(sum(is.na(data)) > 0){stop("Data includes missing values")}
   if(is.numeric(data) == FALSE){stop("Event times and censoring/cause indicator should be numeric")}
   
   data <- as.matrix(data)
-  BivSurv <- BivDabrowska(data)
+  if(bivsurvtype =="dabrowska"){
+    BivSurv <- BivDabrowska(data)
+  } else if(bivsurvtype =="linying"){
+    BivSurv <- BivLinYing(data)
+  }else {stop("Please give valid bivarite survival estimator option")}
+  
   
   survobj1 <- survival::Surv(time = data[,1],event=ifelse(data[,3]>0,1,0))
   km1 <- survival::survfit(survobj1~1)

@@ -4,7 +4,7 @@
 \alias{CovComp}
 \title{Output the martingale and counting process covariance for two variables in presence of competing risks}
 \usage{
-CovComp(data, t, cause1, cause2)
+CovComp(data, t, cause1, cause2, bivsurvtype = "dabrowska")
 }
 \arguments{
 \item{data}{An n by 4 matrix where the first column is the observed event time of the first variable, the second column is the observed event time of the second variable, the third column is the censoring/cause indicator for the first variable (0 indicates censored) and the fourth column is the censoring/cause indicator for the second variable (0 indicates censored)}
@@ -14,6 +14,8 @@ CovComp(data, t, cause1, cause2)
 \item{cause1}{An indicator of which cause to calculate the cause specific hazard for for the first variable, should be a non-zero value that appears in the censoring/cause indicator column for the first variable}
 
 \item{cause2}{An indicator of which cause to calculate the cause specific hazard for for the second variable, should be a non-zero value that appears in the censoring/cause indicator column for the second variable}
+
+\item{bivsurvtype}{A string vector indicating the type of bivariate survival estimator to use, "dabrowska" for Dabrowska's estimator and "linying" for Lin Ying. Lin Ying should only be used for univariate censoring, Dabrowska is default}
 }
 \value{
 A list with the following elements

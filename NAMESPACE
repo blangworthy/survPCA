@@ -3,6 +3,7 @@
 export(BivCIF)
 export(BivCauseHaz)
 export(BivDabrowska)
+export(BivLinYing)
 export(CauseHaz)
 export(CovComp)
 export(CovMatComp)

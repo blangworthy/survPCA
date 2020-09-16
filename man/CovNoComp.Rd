@@ -4,12 +4,14 @@
 \alias{CovNoComp}
 \title{Output the martingale and counting process covariance for two variables without presence of competing risks}
 \usage{
-CovNoComp(data, t)
+CovNoComp(data, t, bivsurvtype = "dabrowska")
 }
 \arguments{
 \item{data}{An n by 4 matrix where the first column is the observed event time of the first variable, the second column is the observed event time of the second variable, the third column is the censoring indicator for the first variable (0 indicates censored) and the fourth column is the censoring indicator for the second variable (0 indicates censored)}
 
 \item{t}{The time to evaluate the martingale and counting process covariance at}
+
+\item{bivsurvtype}{A string vector indicating the type of bivariate survival estimator to use, "dabrowska" for Dabrowska's estimator and "linying" for Lin Ying. Lin Ying should only be used for univariate censoring, Dabrowska is default}
 }
 \value{
 A list with the following elements

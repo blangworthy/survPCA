@@ -5,6 +5,7 @@
 #'@param t The time to evaluate the martingale and counting process covariance at
 #'@param cause1 An indicator of which cause to calculate the cause specific hazard for for the first variable, should be a non-zero value that appears in the censoring/cause indicator column for the first variable
 #'@param cause2 An indicator of which cause to calculate the cause specific hazard for for the second variable, should be a non-zero value that appears in the censoring/cause indicator column for the second variable
+#'@param bivsurvtype A string vector indicating the type of bivariate survival estimator to use, "dabrowska" for Dabrowska's estimator and "linying" for Lin Ying. Lin Ying should only be used for univariate censoring, Dabrowska is default
 #'@return A list with the following elements
 #'\itemize{
 #'\item{MartCov: The martingale covariance between variable 1 and variable 2 at time t}
@@ -19,7 +20,7 @@
 #'@importFrom survival survfit
 #'
 #'@export
-CovComp <- function(data,t,cause1,cause2){
+CovComp <- function(data,t,cause1,cause2,bivsurvtype = "dabrowska"){
   
   data <- as.matrix(data)
   if(min(data[,1]<=0)){stop("Observed times should be positive")}
@@ -50,8 +51,11 @@ CovComp <- function(data,t,cause1,cause2){
   names(if1) <- cif1$X1[-1]
   names(if2) <- cif2$X1[-1]
   
-  
+  if(bivsurvtype =="dabrowska"){
   BivSurv <- BivDabrowska(data)
+  } else if(bivsurvtype =="linying"){
+    BivSurv <- BivLinYing(data)
+  }else {stop("Please give valid bivarite survival estimator option")}
   
   survobj1 <- survival::Surv(time = data[,1],event=ifelse(data[,3]>0,1,0))
   km1 <- survival::survfit(survobj1~1)
