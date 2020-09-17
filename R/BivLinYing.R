@@ -22,7 +22,7 @@ BivLinYing <- function(data){
   mat <- sapply(uniquetime2,function(x) sapply(uniquetime1, function(y) ifelse(censsurv(max(x,y))>0,mean(data[,2]>x & data[,1] > y)/censsurv(max(x,y)),NA)))
   rownames(mat) <- uniquetime1
   colnames(mat) <- uniquetime2
-  
+  return(mat)
   
 }
   
