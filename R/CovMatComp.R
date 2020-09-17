@@ -5,6 +5,7 @@
 #'@param causes A p-dimensional vector that has the causes for each of the p different variables.
 #'@param p The number of variables to calculate the matrix for, if NA ncol(data)/2 will be used
 #'@param t The timepoint to estimate the covariance and correlation matrices
+#'@param bivsurvtype A string vector indicating the type of bivariate survival estimator to use, "dabrowska" for Dabrowska's estimator and "linying" for Lin Ying. Lin Ying should only be used for univariate censoring, Dabrowska is default
 #'@param mineigen The minimum eigenvalue for the martingale and counting process covariance matrices if not already positive semidefinite
 #'@return A list with the following elements
 #'\itemize{
@@ -14,7 +15,7 @@
 #'\item{CorCountComp: The full counting process correlation matrix}
 #'}
 #'@export
-CovMatComp <- function(data,causes,p=NA,t,mineigen = 0.001){
+CovMatComp <- function(data,causes,p=NA,t,bivsurvtype = "dabrowska",mineigen = 0.001){
   if(is.na(p)){p=ncol(data)/2}
   data <- as.matrix(data[,1:(2*p)])
   if(sum(is.na(data)) > 0){stop("Data includes missing values")}
@@ -33,7 +34,7 @@ CovMatComp <- function(data,causes,p=NA,t,mineigen = 0.001){
         CovCountComp[x,x] <- cif1fun(t)*(1-cif1fun(t))
       }
       else{
-        covout <- CovComp(data[,c(x,y,(p+x),(p+y))],t,causes[x],causes[y])
+        covout <- CovComp(data[,c(x,y,(p+x),(p+y))],t,causes[x],causes[y],bivsurvtype = bivsurvtype)
         CovMartComp[x,y] <- covout$MartCov
         CovCountComp[x,y] <- covout$CountCov
       }

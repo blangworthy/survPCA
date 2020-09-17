@@ -4,6 +4,7 @@
 #'@param data A matrix where the first p columns are the event times for the p variables and the next p columns are the censoring indicators for the p variables. The order for the event times and censoring indicators needs to be the same.
 #'@param p The number of variables to calculate the matrix for, if NA ncol(data)/2 will be used
 #'@param t The timepoint to estimate the covariance and correlation matrices
+#'@param bivsurvtype A string vector indicating the type of bivariate survival estimator to use, "dabrowska" for Dabrowska's estimator and "linying" for Lin Ying. Lin Ying should only be used for univariate censoring, Dabrowska is default
 #'@param mineigen The minimum eigenvalue for the martingale and counting process covariance matrices if not already positive semidefinite
 #'@return A list with the following elements
 #'\itemize{
@@ -13,7 +14,7 @@
 #'\item{CorCount: The full counting process correlation matrix}
 #'}
 #'@export
-CovMatNoComp <- function(data,p=NA,t,mineigen = 0.001){
+CovMatNoComp <- function(data,p=NA,t,bivsurvtype = "dabrowska",mineigen = 0.001){
   if(is.na(p)){p=ncol(data)/2}
   data <- as.matrix(data[,1:(2*p)])
   if(sum(is.na(data)) > 0){stop("Data includes missing values")}
@@ -32,7 +33,7 @@ CovMatNoComp <- function(data,p=NA,t,mineigen = 0.001){
         CovCount[x,x] <- survest1(t)*(1-survest1(t))
       }
       else{
-        covout <- CovNoComp(data[,c(x,y,(p+x),(p+y))],t)
+        covout <- CovNoComp(data[,c(x,y,(p+x),(p+y))],t,bivsurvtype = bivsurvtype)
         CovMart[x,y] <- covout$MartCov
         CovCount[x,y] <- covout$CountCov
       }
