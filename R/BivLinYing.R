@@ -18,7 +18,7 @@ BivLinYing <- function(data){
   tmp1 = matrix(rep(data[,1],each = npts1),npts1,ndim)
   tmp2 = matrix(rep(data[,2],each = npts2),npts2,ndim)
   
-  esurv <-  ifelse(tmp1>=uniquetime1,1,0)%*%t(ifelse(tmp2>=uniquetime2,1,0))/ndim
+  esurv <-  ifelse(tmp1>uniquetime1,1,0)%*%t(ifelse(tmp2>uniquetime2,1,0))/ndim
   
   censortime <- apply(data,1,function(x) max(x[1],x[2]))
   censorind <- apply(data,1,function(x) x[3]*x[4])
@@ -30,7 +30,7 @@ BivLinYing <- function(data){
   surv2 <- censsurv(uniquetime2)
   censsurvmat <- sapply(surv2,function(x) sapply(surv1,function(y) min(x,y)))
   
-  mat <- esurv/censsurvmat + 0*esurv/censsurvmat ###Second part is to get NA instead of Inf
+  mat <- esurv/censsurvmat
   
   rownames(mat) <- uniquetime1
   colnames(mat) <- uniquetime2
