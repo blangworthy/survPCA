@@ -73,4 +73,5 @@ CovNoComp <- CovNoComp <- function(data,t,bivsurvtype = "dabrowska"){
   cn <- BivSurvFull[as.character(maxrowbiv),as.character(maxcolbiv)] - survest1(t)*survest2(t)
   
   output <- list("MartCov" = cm,"CountCov" = cn,"SurvVar1"= survest1,"SurvVar2" = survest2)
+  return(output)
 }
